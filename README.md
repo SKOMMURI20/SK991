@@ -1,4 +1,4 @@
-Data Analytics: Predicting Customer Preferences 2020
+Program(Course) 3: Data Analytics: Predicting Customer Preferences 2020
 
 Are the skills in this course applicable to data mining tasks in general?
 Yes! The methods that you will use in this course have wide applicability to the data mining tasks you will encounter in nearly all business sectors and other real-world applications. The skills practiced in this course represent current professional practice and include:
