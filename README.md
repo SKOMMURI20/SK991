@@ -1,16 +1,24 @@
-Hello,
+Data Analytics: Predicting Customer Preferences 2020
 
-Let me begin by thanking you for your investigation into the use of R in our day-to-day data analytics activities. I believe it’s going to be a useful addition, and your investigation was integral in my decision to bring on board as one of our main tools. We will not be replacing RapidMiner completely, since RapidMiner is a very useful tool for visualization and analytics, but we will be using R and R Studio going forward in the next project since we have some deep analytics work to do. Speaking of that…
+Are the skills in this course applicable to data mining tasks in general?
+Yes! The methods that you will use in this course have wide applicability to the data mining tasks you will encounter in nearly all business sectors and other real-world applications. The skills practiced in this course represent current professional practice and include:
 
-The sales team engaged a market research firm to conduct a survey of our existing customers. One of the objectives of the survey was to find out which of two brands of computers our customers prefer. This information will help us decide with which manufacturer we should pursue a deeper strategic relationship. Unfortunately, the answer to the brand preference question was not properly captured for all of the respondents.
+Applying data mining in e-commerce (e.g. profitability prediction, customer segmentation, product selection strategy)
+Preprocessing data for data mining (e.g., applying filters, addressing missing data)
+Using data mining tools and different classifiers (e.g., k-nearest neighbor, decision trees, support vector machines) to develop predictive models
+Using the R statistical programming language
+Using the caret package for R
+Applying machine learning techniques to classification and regression problems
+Optimizing classifiers by adjusting and testing classifier parameters
+Applying cross-validation methods
+Assessing the predictive performance of classifiers by examining key error metrics
+Comparing and selecting different predictive models
+Applying predictive models to test sets
+Presenting data mining results to management.
+How does this course build on what I learned in the Data Analytics for Retail: Understanding Customers course?
+In the Understanding Customers, you employed data analytics techniques to explore the structure of customer data to infer the buying patterns. In this course, you will explore the patterns in the data to create models to predict new events, like customer product preferences. You will also deepen your experience with machine-learning algorithms. Unlike the previous course, where you used algorithms out of the box, this course will teach you to optimize the initial performance of a classifier by adjusting its parameters. Finally, this course will build on the experience you had in the previous course of interpreting the output of a classifier by enabling you to use that interpretation to select from different classifiers to compare their performance characteristics.
 
-That is where you come in: I want you to investigate if customer responses to some survey questions (e.g. income, age, etc.) enable us to predict the answer to the brand preference question. If we can do this with confidence, I would like you to make those predictions and provide the sales team with a complete view of what brand our customers prefer.
+Items to Purchase
+Optional Reference:
 
-To do this, I would like you to run and optimize at least two different decision tree classification methods in R - C5.0 and RandomForest - and compare which one works better for this data set. 
-
-I have already set up the data for you in the attached CSV files: the file labelled CompleteResponses.csv is the data set you will use to train your model and build your predictive model. It includes ~10,000 fully-answered surveys and the key to the survey can be found in survey_key.csv. The file labelled SurveyIncomplete.csv will be your main test set (the data you will apply your optimized model to predict the brand preference). You'll be applying your trained and tested model to this data to prepare the model for production.
-
-When you have completed your analysis, please submit a brief report that includes the methods you tried and your results. I would also like to see the results exported from R for each of the classifiers you tried.
-
-Thanks,
-Danielle
+Johnson, K & Kuhn, M., (2013). Applied Predictive Modeling. Springer (2013 edition), ASIN: B00K15TZU0 (Also available in an Amazon Kindle edition.)
