@@ -27,11 +27,21 @@ data1final <- readyData1[-nas,]
 data1final
 summary(data1final)
 
+#load library and set seed
+library(caret)
+set.seed(998)
 
-# SVM Model
-library(e1071) 
+#create a 20% sample of the data
+data2final <- data1final[sample(1:nrow(data1final), replace=FALSE),]
 
-smodel <- svm(ProductTypeLaptop ~ . , readyData1)
-spred <- predict(smodel, readyData1)
+# define an 75%/25% train/test split of the dataset
+inTraining3 <- createDataPartition(data2final$Price, p = .75, list = FALSE)
+training3 <- data2final[inTraining3,]
+testing3 <- data2final[-inTraining3,]
 
-points(readyData1$ProductTypePC, spred, col = "red", pch=4)
+# SVM Set up Repeated k-fold Cross Validation
+train_control <- trainControl(method="repeatedcv", number=10, repeats=3)
+svm2 <- train(Price ~., data = data2final, method = "svmLinear", trControl = train_control,  preProcess = c("center","scale"))
+#View the model
+svm2
+plot(svm2)
