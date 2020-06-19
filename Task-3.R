@@ -1,13 +1,11 @@
 #Author Sathish Kommuri, Couse 3 & Task 3 (R)
 #install the whole tidyverse:
-install.packages("tidyverse")
 library(caret)
 library(data.table)
-library(e1071)
 library(corrplot)
 library(ggplot2)
 library(ggpubr)
-#Read Data file 1 existing, file 2 new products
+#Read Data files 
 data1 <- fread("existingproductattributes2017.csv")
 data2 <- fread("newproductattributes2017.csv")
 
@@ -18,9 +16,6 @@ str(readyData1)
 newDataFrame2 <- dummyVars(" ~ .", data = data2)
 readyData2 <- data.frame(predict(newDataFrame2, newdata = data2))
 str(readyData2)
-complete.cases(readyData1)
-complete.cases(readyData2)
-which(complete.cases(readyData1))
 which(!complete.cases(readyData1))
 which(!complete.cases(readyData2))
 #na storage
@@ -30,8 +25,7 @@ data1final <- readyData1[-nas,]
 data1final
 summary(data1final)
 
-#load library and set seed
-library(caret)
+#set seed
 set.seed(998)
 
 #create a 20% sample of the data
@@ -51,24 +45,21 @@ gb <- train(Volume ~., data = data1final, method = "gbm", trControl = train_cont
 svm
 rf
 gb
+#to view the relative importance of features
+summary(gb)
 
 # Make predictions on the test data
 svm$bestTune
 predicted_svm <- predict(svm, testing)
-plot(predicted_svm)
 final_svm <- cbind(testing,predicted_svm)
 plot(svm)
 
 predicted_rf <- predict(rf, testing)
-plot(predicted_rf)
 final_rf <- cbind(testing,predicted_rf)
-plot(testing$Volume)
 plot(rf)
 
 predicted_gb <- predict(gb, testing)
-plot(predicted_gb)
 final_gb <- cbind(testing,predicted_gb)
-plot(testing$Volume)
 plot(gb)
 
 #plotting Actual vs predicted values of testing 
@@ -90,9 +81,9 @@ figure <- ggarrange(svm_compare_plot, rf_compare_plot, gb_compare_plot,
 figure
 
 # Prediction on the newdata with the best prediction data model
-data2$new_Volume <- predict(rf, readyData2)
+data2$Volume <- predict(rf, readyData2)
 
-write.csv(data2, "C2.T3output.csv", row.names = TRUE)
+write.csv(data2, "T3output.csv", row.names = TRUE)
 
 
 
