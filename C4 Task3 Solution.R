@@ -9,7 +9,7 @@ training <- read.csv("trainingData.csv")
 
 # Removing zero variance variables
 remove_zerovar_training <- training[ -which(apply(training, 2, var) == 0 )] 
-# checking if all the 
+# checking if we have any zero variance columns
 which(apply(remove_zerovar_training, 2, var) == 0)
 
 
@@ -27,7 +27,7 @@ remove_zerovar_training$LOCATION <- as.factor(remove_zerovar_training$LOCATION)
 # make sure the data type has been converted
 str(remove_zerovar_training$LOCATION)
 
-# brake the dataset into three datasets by buildings
+# break the dataset into three datasets by buildings
 training_building0 <- subset(remove_zerovar_training, BUILDINGID == 0)
 training_building1 <- subset(remove_zerovar_training, BUILDINGID == 1)
 training_building2 <- subset(remove_zerovar_training, BUILDINGID == 2)
@@ -86,7 +86,7 @@ cm_KNN_b0 <- confusionMatrix(prediction_KNN_building0, testing_building0_data$LO
 postResample(prediction_KNN_b0, testing_building0_data$LOCATION)
 
 # resampling for all three models 
-resample_b0 <- resamples( list(C50 = C50_b0, RF = rf_b0, KNN = KNN_b0))
+resample_b0 <- resamples( list(C50 = C50_building0, RF = rf_building0, KNN = KNN_building0))
 summary(resample_b0)
 
 # ---------------- Apply same for building 1 and 2 as well ---------------
@@ -106,7 +106,7 @@ remove_zerovar_training$LOCATION <- as.factor(remove_zerovar_testing$LOCATION)
 # make sure the data type has been converted
 str(remove_zerovar_testing$LOCATION)
 
-# brake the dataset into three datasets by buildings
+# break the dataset into three datasets by buildings
 validating_building0 <- subset(remove_zerovar_testing, BUILDINGID == 0)
 
 # predict using the method with highest accuracy and kappa values ---- Model might change
