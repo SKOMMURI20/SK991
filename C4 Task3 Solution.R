@@ -94,8 +94,7 @@ summary(resample_b0)
 # -------------- Actual prediction on validation data -----------------
 
 testing_dataset <- read.csv("validationData.csv")
-remove_zerovar_testing <- testing_dataset[ -which(apply(testing_dataset, 2, var) == 0 )] 
-remove_zerovar_testing <- remove_zerovar_testing[, -c(466,467,472:474)]
+remove_zerovar_testing <- testing_dataset %>% select(colnames(remove_zerovar_training))
 # check if they are all removed
 names(remove_zerovar_testing)[465:469]
 
